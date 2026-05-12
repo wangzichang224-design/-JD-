@@ -1,0 +1,155 @@
+/* resume.css — A4 打印样式，中文优先，单页紧凑 */
+/* 配合 Pandoc + headless Chrome 导出 PDF */
+
+@page {
+  size: A4;
+  margin: 14mm 16mm 14mm 16mm;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 11pt;
+}
+
+body {
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", "Source Han Sans SC", sans-serif;
+  color: #1a1a1a;
+  line-height: 1.35;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ── Header ─────────────────────────────────── */
+h1 {
+  font-size: 18pt;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2pt;
+  letter-spacing: 1pt;
+}
+
+h1 + p {
+  text-align: center;
+  font-size: 9.5pt;
+  color: #444;
+  margin-bottom: 6pt;
+}
+
+h1 + p a {
+  color: #1a6fb5;
+  text-decoration: none;
+}
+
+/* ── Section headers ────────────────────────── */
+h2 {
+  font-size: 11pt;
+  font-weight: 700;
+  border-bottom: 1.2pt solid #1a1a1a;
+  padding-bottom: 1pt;
+  margin-top: 8pt;
+  margin-bottom: 4pt;
+  page-break-after: avoid;
+}
+
+/* ── Entry titles (project/company + date) ──── */
+h3 {
+  font-size: 10.5pt;
+  font-weight: 700;
+  margin-top: 5pt;
+  margin-bottom: 1pt;
+  page-break-after: avoid;
+}
+
+h3 + p {
+  font-size: 9pt;
+  color: #555;
+  margin-bottom: 2pt;
+}
+
+/* ── Body text ──────────────────────────────── */
+p {
+  margin-bottom: 2pt;
+}
+
+ul, ol {
+  margin-left: 14pt;
+  margin-bottom: 2pt;
+}
+
+li {
+  margin-bottom: 1pt;
+}
+
+/* ── Strong labels ──────────────────────────── */
+strong {
+  font-weight: 700;
+  color: #000;
+}
+
+/* ── Tables (for metrics) ───────────────────── */
+table {
+  width: 70%;
+  margin: 4pt auto 4pt auto;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+}
+
+th, td {
+  padding: 2pt 8pt;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  font-weight: 700;
+  border-bottom: 0.5pt solid #ccc;
+}
+
+td {
+  border-bottom: 0.5pt solid #eee;
+}
+
+/* ── Links ──────────────────────────────────── */
+a {
+  color: #1a6fb5;
+  text-decoration: none;
+}
+
+/* ── Horizontal rule (separator) ────────────── */
+hr {
+  border: none;
+  border-top: 0.5pt solid #ccc;
+  margin: 6pt 0;
+}
+
+/* ── Footer ─────────────────────────────────── */
+p:last-child {
+  text-align: center;
+  font-size: 8pt;
+  color: #999;
+  margin-top: 6pt;
+}
+
+/* ── Print-specific ─────────────────────────── */
+@media print {
+  body {
+    font-size: 10.5pt;
+  }
+  h1 { font-size: 17pt; }
+  h2 { font-size: 10.5pt; }
+  h3 { font-size: 10pt; }
+  table { width: 70%; }
+  @page {
+    margin: 12mm 14mm 10mm 14mm;
+  }
+}
+
+/* ── Avoid breaks inside entries ────────────── */
+h3, h3 + p, h3 + p + ul, h3 + p + ol {
+  page-break-inside: avoid;
+}

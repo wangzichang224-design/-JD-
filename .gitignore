@@ -1,0 +1,4 @@
+# Resume Builder
+output/
+*.pdf
+resume_temp.html
